@@ -9,3 +9,6 @@ dist/
 
 # editor / misc
 *.log
+
+# Claude Code temporary worktrees
+.claude/worktrees/

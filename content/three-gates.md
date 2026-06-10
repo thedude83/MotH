@@ -17,7 +17,8 @@ section
     This is not symbolic interpretation applied afterward. The commandment appears as a consequence of the architecture.
     A useful analogy: a circuitry diagram, a machine's code, and its operating manual describe the same machine from different levels of abstraction. Of course they match — they were always describing the same system. The Tree describes the network. The letters describe the operators running on it. The commandments describe the constraints required to keep those operators functioning.
 
-  image tol-spirit.png
+  image
+    src tol-spirit.png
 
 section
   title The Two Tablets
@@ -153,7 +154,7 @@ section
       op Severance
       path כתר ↔ בינה · Vav · The Hook
       Vav is a hook or peg. The operator is fastening — connecting unmanifest potential down into the structural womb of בינה, where it can take form. A human life is exactly this: source hooked into manifest structure. Murder destroys the hook. It severs the fastening that connects a specific life-stream to its Source, collapsing the channel permanently.
-    card-mirror
+    card
       The right face opens the window toward the only object of desire that cannot be possessed. The left face — murder — tears out the peg that holds a life to that same source. One establishes the orientation. The other severs it permanently in another. Same channel, opposite movements.
 
   principle
@@ -171,7 +172,7 @@ section
       op Observation
       path בינה ↔ תפארת · Ayin · The Eye
       Ayin is an eye. The operator is observation — directing בינה's structured perception into the harmonized center of תפארת. The eye is not the problem. It is a legitimate instrument. Adultery is the corruption of this operator: perception ceases to serve inner harmony and begins serving external desire, misdirecting the soul's structural vision away from its own equilibrium.
-    card-mirror
+    card
       Chet establishes the fence. Ayin is what looks over the fence. The healthy sequence: wisdom → boundary → relationship. The distorted sequence: observation → desire → violation of the boundary.
 
   principle
@@ -189,7 +190,7 @@ section
       op Hooking Inward
       path גבורה ↔ תפארת · Tzadi · The Fishhook
       Tzadi is a fishhook. The operator directs גבורה's restrictive force inward — drawing the harsh power of boundaries toward the service of the heart's harmony. Stealing inverts this. Instead of pulling inward to build one's own integrity, the system projects its reach outward, using גבורה's force to snag what belongs outside its proper boundary.
-    card-mirror
+    card
       Both faces ask the same question: what do you do with what has been entrusted to you? Tet is stewardship of spiritual authority. Tzadi is stewardship of material boundary. The failure mode in both cases is mishandling something given — one by misuse of power, one by appropriation of what belongs elsewhere.
 
   principle
@@ -207,7 +208,7 @@ section
       op Insulation
       path תפארת ↔ הוד · Samekh · The Closed Circle
       Samekh is a closed circle. The operator is insulation — wrapping a protective enclosure around the feedback loop between the heart and the analytical mind. Truth must form an unbroken circuit between תפארת and הוד. False witness punctures this insulation. It introduces an external distortion into a loop that must remain sealed, corrupting the organ of discernment at the exact point where it connects to the heart.
-    card-mirror
+    card
       Yod testifies to reality through action. Samekh protects the circuit through which reality is communicated in speech. One creates a true narrative through what it does. The other destroys the channel that makes truthful communication possible. This is the strongest structural mirror in the whole system.
 
   principle
@@ -225,7 +226,7 @@ section
       op Steering
       path הוד ↔ יסוד · Lamed · The Ox Goad
       Lamed is an ox goad — a pointer used to direct and organize. The operator is steering: using elevated analytical direction to organize the subconscious currents of יסוד toward proper alignment. Coveting is the misuse of this operator. The goad that should direct the Foundation toward the soul's own development is turned outward instead, prodding toward envy of another's position. The soul loses its own direction entirely.
-    card-mirror
+    card
       Nun asks: what has been given to me? Lamed distorted asks: what belongs to someone else? Honoring lineage acknowledges inheritance — I stand in a chain. Coveting rejects it — I compare myself against another chain. This is the deepest psychological pair. It reaches the root of identity itself.
 
 section
