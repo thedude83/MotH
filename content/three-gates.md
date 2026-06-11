@@ -33,8 +33,10 @@ section
     What makes the structure striking is that the two tablets are not two separate lists. They are five principles, each with two faces — one aligned, one corrupted — operating on the same channel from opposite directions. Read that way, the commandments are not ten rules. They are five descriptions of what can go right, and five descriptions of what goes wrong when it does.
     Both tablets converge at תפארת — the heart. Everything either enters harmony through the heart or becomes distorted before reaching it. The heart is the causal regulator of the whole system.
 
+  para
+
   grid 6|6
-  width 500px
+    width 500px
     card-title.right
       title Right Tablet
       subtitle Light descends
