@@ -18,6 +18,17 @@ Rules:
 - A line whose first word matches a slot name listed by the bit → slot.
 - Everything else → body text (joined with newlines, then split into `<p>` tags).
 
+**Content files** live anywhere inside `content/` — subdirectories are fine and mirror into `dist/`.
+`content/books/trivium/the-liberal-arts.md` → `dist/books/trivium/the-liberal-arts.html`.
+
+**Stems** are always written without a leading slash and without `.html`. For a top-level file the stem is just the filename; for a subdirectory file it includes the path from `content/`:
+
+```
+link three-gates                        → dist/three-gates.html
+link books/trivium/the-liberal-arts     → dist/books/trivium/the-liberal-arts.html
+next books/trivium/the-liberal-arts     → same, for splash pages
+```
+
 ---
 
 ## page
@@ -37,13 +48,15 @@ page
 
 | slot | effect |
 |---|---|
-| `type` | `content` (default, shows nav) · `listing` (no nav, centered layout) |
+| `type` | `content` (default, shows nav) · `listing` (no nav, centered layout) · `splash` (hero only, enter link) |
 | `title` | Document `<title>` + hero h1 |
 | `title2` | Nav brand label — replaces `title` in the nav if present |
 | `glyph` | Large decorative letter(s) above the hero title |
 | `subtitle` | Large italic h2 below the hero title |
 | `flavor` | Smaller italic intro paragraph in hero |
 | `link.flavor` | Auto-filled as body text on any `card-link` that points to this page |
+| `next` | `splash` only — stem of the next page; renders a gold "Enter" button below the hero |
+| `width` | Constrains the content body below the hero — hero always spans the full container |
 
 ---
 
@@ -64,16 +77,31 @@ section creation
 
 ```
 section
-  title The Method
-  num   01
+  title    The Method
+  num      01
+  stamp    See also: Part II
   subtitle The starting point
+```
+
+```
+section
+  title     The Structure
+  image     tol-spirit.png
+  imgsize   50
+  imgopacity 70
+  subtitle  The ten sefirot
 ```
 
 | slot | effect |
 |---|---|
 | `title` | H2 display text |
-| `num` | Small dim label to the left of the h2 — omit to render h2 alone |
+| `num` | Small gold label to the left of the h2 |
+| `stamp` | Right-aligned gold monospace text in the same row as the h2 |
 | `subtitle` | Italic centered line below the rule |
+| `image` | Filename from `img/` — renders as a centered figure **above** the section head |
+| `imgsize` | Width of the image as a number (percent, no `%`) — default `33` |
+| `imgopacity` | Opacity as a number 0–100 — default `50` |
+| `width` | Max-width override for the section head and rule |
 
 `args` (inline, after `section`): becomes the anchor `id`. Omit to auto-slug from title.
 
@@ -112,7 +140,8 @@ Processed inside any body text. Works in cards, notes, paras — anywhere body p
 |---|---|
 | `[em]text[/em]` | italic gold |
 | `[em.right]text[/em]` | italic green |
-| `[em.left]text[/em]` | italic red |
+| `[em.left]text[/em]` | italic rose |
+| `[em.red]text[/em]` | italic bright red |
 | `[i]text[/i]` | italic, no color |
 
 ```
@@ -157,6 +186,8 @@ card
 
 Registered child bits → rendered inside the card **before** body paragraphs.
 Body lines (not slots, not registered bits) → each becomes a `<p>`.
+
+`card-mirror` is an alias for `card` with identical behavior.
 
 ---
 
@@ -204,7 +235,7 @@ card-title
 ## card-link
 
 Navigational card that links to another page. The relation layer auto-fills `glyph`,
-`title`, and `subtitle` from the target page's `page` block — only write them to override.
+`title`, and body text from the target page's `page` block — only write them to override.
 
 ```
 card-link
@@ -221,7 +252,7 @@ card-link
 
 | slot | effect |
 |---|---|
-| `link` | Filename stem — no `.html` |
+| `link` | Page stem — no `.html`. Use path-from-content for subdirectory pages |
 | `glyph` | Auto-filled from target `page.glyph` |
 | `title` | Auto-filled from target `page.title` |
 | `label` | Small all-caps label above the title — never auto-filled |
@@ -251,12 +282,103 @@ para
 
 ## note
 
-Gold left-border callout block. Italic body text.
+Left-border callout block. Italic body text. Default gold; `color` slot changes the border and background.
 
 ```
 note
   The fifth desire was always the destination.
 ```
+
+```
+note
+  color red
+  This is a warning or critical aside.
+```
+
+| slot | effect |
+|---|---|
+| `color` | `left` (rose) · `right` (green) · `red` (bright red) · default gold |
+
+---
+
+## quote
+
+Centered pullquote with optional attribution. Body text renders as large italic serif.
+
+```
+quote
+  source Talmud Eser HaSefirot
+  author Baal HaSulam
+  There is no coercion in spirituality.
+```
+
+```
+quote
+  The desire to receive is the vessel. The light is the pleasure.
+```
+
+| slot | effect |
+|---|---|
+| `source` | Work title — renders bold small-caps gold above the author |
+| `author` | Person name — renders italic below the source |
+
+Body lines → large italic paragraphs. `source` and `author` are both optional.
+
+Pass `big` as args (or use `quote.big`) for the large dramatic pullquote variant:
+
+```
+quote big
+  source The Trivium
+  author Sister Miriam Joseph
+  Those who first perfect their own faculties are better prepared to serve others.
+```
+
+---
+
+## important
+
+Gold-bordered callout box with an optional bold label line and body prose.
+
+```
+important
+  label Note on Free Will
+  This is not freedom over what you desire.
+  It is freedom over which force corrects you.
+```
+
+| slot | effect |
+|---|---|
+| `label` | Bold bright header inside the box |
+| `color` | `left` (rose border) · `right` (green border) · `red` (bright red border) · default gold |
+
+Body lines → prose paragraphs inside the box.
+
+---
+
+## list
+
+Bulleted list. Body lines are `<li>` items. Nest a child `list` inside to create
+a sub-list — it attaches to the last item of the parent.
+
+```
+list
+  First item
+  Second item
+  Third item
+```
+
+Nested:
+```
+list
+  The Trivium
+  list
+    Logic: art of thinking
+    Grammar: art of inventing and combining symbols
+    Rhetoric: art of communication
+```
+
+Each level uses a different bullet style (disc → circle → square). Nesting can go
+as deep as needed by continuing to indent `list` inside `list`.
 
 ---
 
@@ -329,34 +451,6 @@ image 50
 | `args` | Width percentage (default `33%`) |
 | `src` slot | Filename inside `img/` |
 | `alt` slot | Alt text — omit if decorative |
-
----
-
-## Named SVG bits — creation page
-
-No slots, no args. Drop inside a `card` as a child — renders before body prose.
-
-```
-card
-  step I
-  svg.phase1
-  The vessel is filled with the Creator's light…
-```
-
-| bit | renders |
-|---|---|
-| `svg.phase0a` | Vesica / infinity — The Creator |
-| `svg.phase0b` | Vesica + thick down arrow |
-| `svg.phase1` | Cup + thin down arrow |
-| `svg.phase2` | Cup + thin up arrow |
-| `svg.phase3` | Cup + thin up + down arrows |
-| `svg.phase4` | Cup + thick down arrow |
-| `svg.phase5` | Cup + thick down + thick up arrows |
-| `svg.desire1` | Flame — Bodily (גופניות) |
-| `svg.desire2` | Bar chart — Wealth (עושר) |
-| `svg.desire3` | Mountain graph — Honor (כבוד) |
-| `svg.desire4` | Eye / lens — Knowledge (דעת) |
-| `svg.desire5` | Circle + point — Point in the Heart (נקודה שבלב) |
 
 ---
 
@@ -533,18 +627,51 @@ Scroll-spy watches gate IDs: `gate-the-mark`, `gate-the-head`, `gate-the-door`.
 
 ---
 
+## Named SVG bits — creation page
+
+No slots, no args. Drop inside a `card` as a child — renders before body prose.
+
+```
+card
+  step I
+  svg.phase1
+  The vessel is filled with the Creator's light…
+```
+
+| bit | renders |
+|---|---|
+| `svg.phase0a` | Vesica / infinity — The Creator |
+| `svg.phase0b` | Vesica + thick down arrow |
+| `svg.phase1` | Cup + thin down arrow |
+| `svg.phase2` | Cup + thin up arrow |
+| `svg.phase3` | Cup + thin up + down arrows |
+| `svg.phase4` | Cup + thick down arrow |
+| `svg.phase5` | Cup + thick down + thick up arrows |
+| `svg.desire1` | Flame — Bodily (גופניות) |
+| `svg.desire2` | Bar chart — Wealth (עושר) |
+| `svg.desire3` | Mountain graph — Honor (כבוד) |
+| `svg.desire4` | Eye / lens — Knowledge (דעת) |
+| `svg.desire5` | Circle + point — Point in the Heart (נקודה שבלב) |
+
+---
+
 ## Quick lookup
 
 | word | slots | args | body |
 |---|---|---|---|
-| `page` | type · title · title2 · glyph · subtitle · flavor · link.flavor | — | — |
-| `section` | title · num · subtitle | anchor id | — |
+| `page` | type · title · title2 · glyph · subtitle · flavor · link.flavor · next · **width** | — | — |
+| `section` | title · num · stamp · subtitle · image · imgsize · imgopacity · **width** | anchor id | — |
 | `card` | step · title · echo · **width** | — | ✓ paragraphs |
+| `card-mirror` | _(alias for `card`)_ | — | ✓ paragraphs |
 | `card-term` | term · label · **width** | — | ✓ paragraphs |
 | `card-title` | title · subtitle · **width** | — | — |
 | `card-link` | link · glyph · label · title · img · **width** | — | ✓ overrides auto-fill |
 | `para` | — | — | ✓ paragraphs |
-| `note` | — | — | ✓ paragraphs |
+| `note` | color | — | ✓ italic paragraphs |
+| `quote` | source · author | — · `big` | ✓ italic paragraphs |
+| `quote.big` | source · author | — | ✓ large italic paragraphs |
+| `important` | label · color | — | ✓ paragraphs |
+| `list` | — | — | ✓ `<li>` items; nest `list` children for sub-lists |
 | `grid` | **width** | 2 · 2.1.2 · 1\|3\|1 | — |
 | `image` | src · alt | width % | — |
 | `card-gate` | let · name · step · **width** | — | ✓ paragraphs |

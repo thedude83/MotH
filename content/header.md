@@ -1,3 +1,3 @@
 site-header
-  left three-gates
+  left books/trivium/index
   right divine-work

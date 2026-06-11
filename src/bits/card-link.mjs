@@ -3,7 +3,7 @@
 export const cardLink = {
   slots: ['link', 'glyph', 'label', 'title', 'img', 'img-right', 'width'],
   render({ slots, body, children }) {
-    const href = slots.link ? `${slots.link}.html` : '#';
+    const href = slots.link ? `/${slots.link}.html` : '#';
     const hasLeft  = !!slots.img;
     const hasRight = !!slots['img-right'] || children.length > 0;
     const hasAny   = hasLeft || hasRight;

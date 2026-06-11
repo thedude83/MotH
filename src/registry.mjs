@@ -20,6 +20,9 @@ import { svgPhase0a, svgPhase0b, svgPhase1, svgPhase2,
          svgPhase3, svgPhase4, svgPhase5       } from './bits/svg-creation.mjs';
 import { svgDesire1, svgDesire2, svgDesire3,
          svgDesire4, svgDesire5                } from './bits/svg-desire.mjs';
+import { quote, quoteBig                      } from './bits/quote.mjs';
+import { list                                 } from './bits/list.mjs';
+import { important                            } from './bits/important.mjs';
 
 export const registry = {
   section,
@@ -56,4 +59,8 @@ export const registry = {
   'svg.desire3':       svgDesire3,
   'svg.desire4':       svgDesire4,
   'svg.desire5':       svgDesire5,
+  quote,
+  'quote.big':         quoteBig,
+  list,
+  important,
 };

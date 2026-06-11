@@ -1,6 +1,8 @@
 // LOGIC  /fu/  — walk the grammar tree, look up each word in the registry,
 // ask its bit to build html. Knows no vocabulary of its own.
-import fs from 'node:fs';
+import fs   from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { parse    } from './parse.mjs';
 import { registry } from './registry.mjs';
 import { gatherRecords, relate } from './relate.mjs';
@@ -40,6 +42,7 @@ export function render(src, css, records = {}, headerData = null) {
     subtitle: slotOf(pageNode, 'subtitle'),
     flavor:   slotOf(pageNode, 'flavor'),
     next:     slotOf(pageNode, 'next'),
+    width:    slotOf(pageNode, 'width'),
   };
 
   // collect section titles → nav links + hero-topics
@@ -61,7 +64,7 @@ function shell({ pd, sections, css, body, headerData }) {
   const isContent = pd.type !== 'listing' && !isSplash;
   const brand = pd.title2 || pd.title;
   const enterLink = isSplash && pd.next
-    ? `<a class="splash-enter" href="${pd.next}.html">Enter</a>`
+    ? `<a class="splash-enter" href="/${pd.next}.html">Enter</a>`
     : '';
   return `<!DOCTYPE html>
 <html lang="en" data-type="${pd.type}">
@@ -82,7 +85,9 @@ ${isContent ? nav({ brand, sections }) : ''}
 <div class="container">
 ${hero({ ...pd, sections })}
 ${enterLink}
+<div class="content-body"${pd.width ? ` style="max-width:${pd.width}"` : ''}>
 ${body}
+</div>
 </div>
 ${footer()}
 <script>
@@ -108,9 +113,20 @@ const here       = p => new URL(p, import.meta.url);
 const contentDir = here('../content/');
 const css        = fs.readFileSync(here('./styles.css'), 'utf8');
 fs.mkdirSync(here('../dist/'), { recursive: true });
-const allFiles = fs.readdirSync(contentDir)
-  .filter(f => f.endsWith('.md'))
-  .map(f => ({ name: f.replace(/\.md$/, ''), src: fs.readFileSync(new URL(f, contentDir), 'utf8') }));
+function walkMd(dir, root) {
+  root = root || dir;
+  const out = [];
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, e.name);
+    if (e.isDirectory()) out.push(...walkMd(full, root));
+    else if (e.name.endsWith('.md')) {
+      const name = path.relative(root, full).replace(/\.md$/, '').replace(/\\/g, '/');
+      out.push({ name, src: fs.readFileSync(full, 'utf8') });
+    }
+  }
+  return out;
+}
+const allFiles = walkMd(fileURLToPath(contentDir));
 const files   = allFiles.filter(f => f.name !== 'header');
 const records = gatherRecords(files);
 
@@ -123,7 +139,7 @@ if (headerFile) {
   if (hNode) {
     const resolve = slug => {
       const rec = records[slug];
-      return { title: rec?.title || slug, href: slug ? `${slug}.html` : 'index.html' };
+      return { title: rec?.title || slug, href: slug ? `/${slug}.html` : '/index.html' };
     };
     headerData = {
       left:  hNode.children.filter(c => c.name === 'left').map(c => resolve(c.rest)),
@@ -133,7 +149,9 @@ if (headerFile) {
 }
 
 for (const { name, src } of files) {
-  fs.writeFileSync(here(`../dist/${name}.html`), render(src, css, records, headerData));
+  const outPath = here(`../dist/${name}.html`);
+  fs.mkdirSync(new URL('.', outPath), { recursive: true });
+  fs.writeFileSync(outPath, render(src, css, records, headerData));
   console.log(`built dist/${name}.html`);
 }
 try { fs.cpSync(here('../img/'), here('../dist/img/'), { recursive: true }); } catch {}
