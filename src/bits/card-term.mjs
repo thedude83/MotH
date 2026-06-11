@@ -1,10 +1,11 @@
 // [fo] — term card: optional icon SVG child + label pair + body prose
 export const cardTerm = {
-  slots: ['term', 'label'],
+  slots: ['term', 'label', 'width'],
   render({ slots, body, children }) {
     const icon = children.join('');
     const paras = body ? body.split('\n').filter(Boolean).map(l => `<p>${l}</p>`).join('') : '';
-    return `<div class="card card-term">
+    const w = slots.width ? ` style="max-width:${slots.width}"` : '';
+    return `<div class="card card-term"${w}>
   <div class="term-header">
     ${icon}
     <div class="term-labels">

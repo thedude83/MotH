@@ -4,8 +4,8 @@
 // phase0a: vesica / infinity alone — The Creator (unlabelled card)
 export const svgPhase0a = {
   render() {
-    return `<div class="svg-art"><svg width="140" height="70" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" role="img">
-  <path d="M 60 30 C 52 18 38 10 25 10 C 8 10 8 50 25 50 C 38 50 52 42 60 30 C 68 18 82 10 95 10 C 112 10 112 50 95 50 C 82 50 68 42 60 30 Z" fill="none" stroke="var(--gold)" stroke-width="3"/>
+    return `<div class="svg-art"><svg width="120" height="150" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" role="img">
+  <path d="M 60 75 C 52 63 38 55 25 55 C 8 55 8 95 25 95 C 38 95 52 87 60 75 C 68 63 82 55 95 55 C 112 55 112 95 95 95 C 82 95 68 87 60 75 Z" fill="none" stroke="var(--gold)" stroke-width="3"/>
 </svg></div>`;
   }
 };
@@ -13,10 +13,10 @@ export const svgPhase0a = {
 // phase0b: vesica + thick down arrow — step O (vessel brought into being)
 export const svgPhase0b = {
   render() {
-    return `<div class="svg-art"><svg width="140" height="140" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img">
+    return `<div class="svg-art"><svg width="120" height="150" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg" role="img">
   <path d="M 60 30 C 52 18 38 10 25 10 C 8 10 8 50 25 50 C 38 50 52 42 60 30 C 68 18 82 10 95 10 C 112 10 112 50 95 50 C 82 50 68 42 60 30 Z" fill="none" stroke="var(--gold)" stroke-width="3"/>
-  <line x1="60" y1="35" x2="60" y2="110" stroke="var(--gold)" stroke-width="9" stroke-linecap="round"/>
-  <polyline points="45,93 60,112 75,93" fill="none" stroke="var(--gold)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+  <line x1="60" y1="35" x2="60" y2="135" stroke="var(--gold)" stroke-width="9" stroke-linecap="round"/>
+  <polyline points="45,118 60,137 75,118" fill="none" stroke="var(--gold)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
 </svg></div>`;
   }
 };

@@ -1,8 +1,9 @@
 // [fo] — tablet commandment card and tablet column header. Factory pattern for .right/.left.
 const makeTablet = (color) => ({
-  slots: ['num', 'let', 'op', 'path', 'gloss'],
+  slots: ['num', 'let', 'op', 'path', 'gloss', 'width'],
   render({ slots }) {
-    return `<div class="card tablet ${color}">
+    const w = slots.width ? ` style="max-width:${slots.width}"` : '';
+    return `<div class="card tablet ${color}"${w}>
   <div class="t-top">
     <span class="t-num">${slots.num || ''}</span>
     <span class="t-let">${slots.let || ''}</span>
@@ -15,9 +16,10 @@ const makeTablet = (color) => ({
 });
 
 const makeTitlePillar = (color) => ({
-  slots: ['title', 'subtitle'],
+  slots: ['title', 'subtitle', 'width'],
   render({ slots }) {
-    return `<div class="card tablet-head ${color}">
+    const w = slots.width ? ` style="max-width:${slots.width}"` : '';
+    return `<div class="card tablet-head ${color}"${w}>
   <span class="t-label">${slots.title || ''}</span>
   <span class="t-dir">${slots.subtitle || ''}</span>
 </div>`;

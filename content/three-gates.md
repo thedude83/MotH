@@ -8,6 +8,7 @@ page
 
 section
   title The Method
+  num 01
   subtitle The starting point
 
   card
@@ -22,6 +23,7 @@ section
 
 section
   title The Two Tablets
+  num 02
   subtitle Two architectures
 
   card
@@ -32,6 +34,7 @@ section
     Both tablets converge at תפארת — the heart. Everything either enters harmony through the heart or becomes distorted before reaching it. The heart is the causal regulator of the whole system.
 
   grid 6|6
+  width 500px
     card-title.right
       title Right Tablet
       subtitle Light descends
@@ -101,6 +104,7 @@ section
 
 section
   title The Five Principles
+  num 03
   subtitle Each principle has two faces — one aligned, one corrupted — operating on the same channel
 
   sequence
@@ -231,6 +235,7 @@ section
 
 section
   title תפארת — The Regulator
+  num 04
   subtitle The center holds — or it doesn't
 
   card
@@ -241,6 +246,7 @@ section
 
 section
   title The Three Gates — The Ascent
+  num 05
   subtitle The third architecture
 
   card

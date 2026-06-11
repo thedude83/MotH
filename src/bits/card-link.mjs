@@ -1,11 +1,12 @@
 // [fo] — navigation link card; relate.mjs fills glyph/title/subtitle/body from linked page
 // img slot is optional: when present, card lays out as a row (image left, content right)
 export const cardLink = {
-  slots: ['link', 'glyph', 'label', 'title', 'img'],
+  slots: ['link', 'glyph', 'label', 'title', 'img', 'width'],
   render({ slots, body }) {
     const href = slots.link ? `${slots.link}.html` : '#';
     const hasImage = !!slots.img;
-    return `<div class="card card-link${hasImage ? ' has-image' : ''}">
+    const w = slots.width ? ` style="max-width:${slots.width}"` : '';
+    return `<div class="card card-link${hasImage ? ' has-image' : ''}"${w}>
   ${hasImage ? `<img class="card-img" src="img/${slots.img}" alt="" loading="lazy">` : ''}
   <div class="card-body">
     ${slots.glyph ? `<span class="card-glyph">${slots.glyph}</span>`      : ''}

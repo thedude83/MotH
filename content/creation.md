@@ -18,8 +18,9 @@ grid 1
 section creation
   title The Act of Creation
   subtitle How the Creator brought something other than itself into being
-  grid 1
+  grid 2.2.2
     card
+      step 0
       svg.phase0a
       The Creator. Boundless, whole, without beginning or end. Its entire nature is to give — not as a choice, but as what it is. Pure light with nowhere yet to go.
     card
@@ -74,6 +75,7 @@ section hunger
   para
     The desire to receive was not built to stay still. The Creator designed it to keep expanding — each stage larger and less easily satisfied than the last — until it would eventually demand something no object in this world could give. The ladder is not a failure of the creature. It is the plan working exactly as intended.
   grid 1
+    width 500px
     card-term
       svg.desire1
       term גופניות
@@ -144,7 +146,7 @@ section maturing
       step Intention · כַּוָּנָה
       The desire was never the problem. It was always the vessel. The only thing that needed to change was what it was pointed at.
       Intention is not a thought you have before an action. It is the form the vessel itself takes. What you intend, you are.
-      Equivalence of Form is not a metaphor. It means your intention and the Creator's intention face the same direction. That alignment — תיקון, correction — is how the vessel is repaired. Not by suppressing desire. Not by performing virtue. By turning the intention from [em.left]receiving for yourself[/em] to [em]receiving for the sake of giving.[/em]
+      Equivalence of Form is not a metaphor. It means your intention and the Creator's intention face the same direction. That alignment — תיקון, correction — is how the vessel is repaired. Not by suppressing desire. Not by performing virtue. By turning the intention from [em.left]receiving for yourself[/em] to [em.right]receiving for the sake of giving.[/em]
       The distance between you and the Creator is not measured in time or effort. It is measured in the gap between those two intentions. Close that gap — and everything closes with it.
       This is the whole work. And it is written into every branch of the Tree.
     card
