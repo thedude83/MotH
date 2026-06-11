@@ -7,10 +7,8 @@ page
 grid 2.1.2
   card-link
     link creation
-    glyph בריאה
     label The Foundation
-    title Creation
-    Why anything exists at all. The act of creation, the structure of physical reality, and the arc of a human life — the same pattern at every scale.
+    
   card-link
     link two-paths
     glyph הדרכים
@@ -18,9 +16,10 @@ grid 2.1.2
     title The Two Paths
     The creature will be corrected — the only open question is how. The Path of Pain arrives uninvited. The Path of Light requires consent. This is the whole of free will.
   card-link
+    img-right tol-spirit.png
     link three-gates
     glyph השערים
-    label The Architecture
+    label The Preperation
     title The Three Gates
     The Ten Commandments placed on the Tree of Life paths — not as moral rules, but as maintenance protocols for the soul's operating system. Five principles, two faces each. Three gates of ascent.
   card-link

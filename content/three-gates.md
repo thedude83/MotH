@@ -2,7 +2,7 @@ page
   type content
   title The Three Gates
   title2 השערים
-  glyph ד · ר · ת
+  glyph תרד
   subtitle Architecture of the Soul
   flavor The commandments are not the starting point. The path mechanics are. What follows is the map.
 
@@ -11,8 +11,8 @@ section
   num 01
   subtitle The starting point
 
-  card
-    step The Starting Point
+  para
+    align left
     The Ten Commandments are usually read as moral instructions. This page reads them differently — as operational constraints derived from the mechanics of the Tree of Life.
     Each path on the Tree connects two sefirot and is assigned a Hebrew letter. The letter carries a traditional functional meaning. The sefirot carry traditional properties. From those three inputs — letter, upper node, lower node — a path function emerges. The commandment associated with that path then reads as the maintenance rule for that function. If you maintain the function, the path operates correctly. If you violate the commandment, you are describing the exact failure mode of that path.
     This is not symbolic interpretation applied afterward. The commandment appears as a consequence of the architecture.

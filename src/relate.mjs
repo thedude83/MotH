@@ -3,7 +3,7 @@
 // Edit the page, every card pointing to it updates. Author-typed slots always win.
 import { parse } from './parse.mjs';
 
-const LINK_SLOTS = ['glyph', 'title', 'subtitle'];
+const LINK_SLOTS = ['glyph', 'title', 'subtitle', 'label', 'img', 'width'];
 
 const slotChild = (name, rest) => ({ name, rest, text: `${name} ${rest}`, children: [] });
 const bodyChild = (text) => ({ name: '·body', rest: '', text, children: [] });
@@ -30,9 +30,8 @@ export function relate(nodes, records) {
         if (rec) {
           const missing = n => !node.children.some(c => c.name === n);
           const hasBody = node.children.some(c => !LINK_SLOTS.includes(c.name) && c.name !== 'link');
-          if (rec.glyph    && missing('glyph'))    node.children.push(slotChild('glyph',    rec.glyph));
-          if (rec.title    && missing('title'))    node.children.push(slotChild('title',    rec.title));
-          if (rec.subtitle && missing('subtitle')) node.children.push(slotChild('subtitle', rec.subtitle));
+          if (rec.glyph && missing('glyph')) node.children.push(slotChild('glyph', rec.glyph));
+          if (rec.title && missing('title')) node.children.push(slotChild('title', rec.title));
           if (rec['link.flavor'] && !hasBody) node.children.push(bodyChild(rec['link.flavor']));
         }
       }

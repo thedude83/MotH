@@ -5,9 +5,9 @@ page
   glyph בראשית
   subtitle In the Beginning
   flavor The same pattern repeats at every scale of existence — from the moment the Creator first withdrew to make room for another, to the structure of all physical reality, to the arc of a single human life.
-  link.flavor The act of creation, the four kingdoms, the growing hunger, and the maturing of the creature — one pattern at every scale.
+  link.flavor Why anything exists at all. The act of creation, the structure of physical reality, and the arc of a human life — the same pattern at every scale.
 
-grid 1
+grid 1|1
   card
     step Desire · רצון
     Desire (רצון) is the actual substance of the soul — the matter creation is made of. It is the vessel, the lack, the capacity to receive. Everything the creature is, feels, and reaches for flows from this: hunger, longing, love, the search for meaning. The desire itself never disappears. It is what you are made of.
