@@ -10,6 +10,9 @@ import { hero   } from './bits/hero.mjs';
 
 const slug   = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const slotOf = (node, name) => node?.children.find(c => c.name === name)?.rest ?? '';
+const inline = s => s
+  .replace(/\[em(\.[\w]+)?\](.*?)\[\/em\]/g, (_, v, t) => `<em${v ? ` class="${v.slice(1)}"` : ''}>${t}</em>`)
+  .replace(/\[i\](.*?)\[\/i\]/g, '<i>$1</i>');
 
 function renderNode(node) {
   const bit = registry[node.name];
@@ -18,7 +21,7 @@ function renderNode(node) {
   for (const child of node.children) {
     if (registry[child.name])          children.push(renderNode(child));
     else if (bit.slots?.includes(child.name)) slots[child.name] = child.rest;
-    else                               body.push(child.text);
+    else                               body.push(inline(child.text));
   }
   return bit.render({ args: node.rest, slots, body: body.join('\n'), children });
 }
@@ -40,7 +43,7 @@ export function render(src, css, records = {}) {
   // collect section titles → nav links + hero-topics
   const sections = nodes
     .filter(n => n.name === 'section')
-    .map(n => ({ id: slug(slotOf(n, 'title')), label: slotOf(n, 'title') }))
+    .map(n => ({ id: n.rest || slug(slotOf(n, 'title')), label: slotOf(n, 'title') }))
     .filter(s => s.id);
 
   const body = nodes
