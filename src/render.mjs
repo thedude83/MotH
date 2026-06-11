@@ -4,9 +4,10 @@ import fs from 'node:fs';
 import { parse    } from './parse.mjs';
 import { registry } from './registry.mjs';
 import { gatherRecords, relate } from './relate.mjs';
-import { nav    } from './bits/nav.mjs';
-import { footer } from './bits/footer.mjs';
-import { hero   } from './bits/hero.mjs';
+import { nav        } from './bits/nav.mjs';
+import { footer     } from './bits/footer.mjs';
+import { hero       } from './bits/hero.mjs';
+import { siteHeader } from './bits/site-header.mjs';
 
 const slug   = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const slotOf = (node, name) => node?.children.find(c => c.name === name)?.rest ?? '';
@@ -19,14 +20,14 @@ function renderNode(node) {
   if (!bit) return '';
   const slots = {}, body = [], children = [];
   for (const child of node.children) {
-    if (registry[child.name])          children.push(renderNode(child));
-    else if (bit.slots?.includes(child.name)) slots[child.name] = child.rest;
-    else                               body.push(inline(child.text));
+    if (bit.slots?.includes(child.name)) slots[child.name] = child.rest;
+    else if (registry[child.name])       children.push(renderNode(child));
+    else                                 body.push(inline(child.text));
   }
   return bit.render({ args: node.rest, slots, body: body.join('\n'), children });
 }
 
-export function render(src, css, records = {}) {
+export function render(src, css, records = {}, headerData = null) {
   const nodes = parse(src);
   relate(nodes, records);
 
@@ -38,6 +39,7 @@ export function render(src, css, records = {}) {
     glyph:    slotOf(pageNode, 'glyph'),
     subtitle: slotOf(pageNode, 'subtitle'),
     flavor:   slotOf(pageNode, 'flavor'),
+    next:     slotOf(pageNode, 'next'),
   };
 
   // collect section titles → nav links + hero-topics
@@ -51,12 +53,16 @@ export function render(src, css, records = {}) {
     .map(renderNode)
     .join('\n');
 
-  return shell({ pd, sections, css, body });
+  return shell({ pd, sections, css, body, headerData });
 }
 
-function shell({ pd, sections, css, body }) {
-  const isContent = pd.type !== 'listing';
+function shell({ pd, sections, css, body, headerData }) {
+  const isSplash  = pd.type === 'splash';
+  const isContent = pd.type !== 'listing' && !isSplash;
   const brand = pd.title2 || pd.title;
+  const enterLink = isSplash && pd.next
+    ? `<a class="splash-enter" href="${pd.next}.html">Enter</a>`
+    : '';
   return `<!DOCTYPE html>
 <html lang="en" data-type="${pd.type}">
 <head>
@@ -65,22 +71,32 @@ function shell({ pd, sections, css, body }) {
 <title>${pd.title}</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>${css}</style>
-<script>document.documentElement.dataset.theme=localStorage.getItem('moth-theme')||'dark';</script>
+<script>
+document.documentElement.dataset.theme=localStorage.getItem('moth-theme')||'dark';
+document.documentElement.style.zoom=localStorage.getItem('moth-zoom')||'1';
+</script>
 </head>
 <body>
+${headerData ? siteHeader(headerData) : ''}
 ${isContent ? nav({ brand, sections }) : ''}
-<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
 <div class="container">
 ${hero({ ...pd, sections })}
+${enterLink}
 ${body}
 </div>
 ${footer()}
 <script>
 (function(){
-  var r=document.documentElement,b=document.getElementById('theme-toggle');
-  function a(t){r.dataset.theme=t;b.textContent=t==='dark'?'☀ light':'☾ dark';}
-  a(localStorage.getItem('moth-theme')||'dark');
-  b.addEventListener('click',function(){var n=r.dataset.theme==='dark'?'light':'dark';localStorage.setItem('moth-theme',n);a(n);});
+  var r=document.documentElement;
+  var tb=document.getElementById('theme-toggle');
+  function applyTheme(t){r.dataset.theme=t;tb.textContent=t==='dark'?'☀ light':'☾ dark';}
+  applyTheme(localStorage.getItem('moth-theme')||'dark');
+  tb.addEventListener('click',function(){var n=r.dataset.theme==='dark'?'light':'dark';localStorage.setItem('moth-theme',n);applyTheme(n);});
+
+  var zb=document.getElementById('zoom-toggle');
+  function applyZoom(z){r.style.zoom=z;zb.textContent=z==='1.33'?'zoom out':'zoom in';zb.dataset.active=z==='1.33'?'true':'false';}
+  applyZoom(localStorage.getItem('moth-zoom')||'1');
+  zb.addEventListener('click',function(){var n=r.style.zoom==='1.33'?'1':'1.33';localStorage.setItem('moth-zoom',n);applyZoom(n);});
 })();
 </script>
 </body>
@@ -92,12 +108,32 @@ const here       = p => new URL(p, import.meta.url);
 const contentDir = here('../content/');
 const css        = fs.readFileSync(here('./styles.css'), 'utf8');
 fs.mkdirSync(here('../dist/'), { recursive: true });
-const files   = fs.readdirSync(contentDir)
+const allFiles = fs.readdirSync(contentDir)
   .filter(f => f.endsWith('.md'))
   .map(f => ({ name: f.replace(/\.md$/, ''), src: fs.readFileSync(new URL(f, contentDir), 'utf8') }));
+const files   = allFiles.filter(f => f.name !== 'header');
 const records = gatherRecords(files);
+
+// resolve sitewide header config from content/header.md
+const headerFile = allFiles.find(f => f.name === 'header');
+let headerData = null;
+if (headerFile) {
+  const hNodes = parse(headerFile.src);
+  const hNode  = hNodes.find(n => n.name === 'site-header');
+  if (hNode) {
+    const resolve = slug => {
+      const rec = records[slug];
+      return { title: rec?.title || slug, href: slug ? `${slug}.html` : 'index.html' };
+    };
+    headerData = {
+      left:  hNode.children.filter(c => c.name === 'left').map(c => resolve(c.rest)),
+      right: hNode.children.filter(c => c.name === 'right').map(c => resolve(c.rest)),
+    };
+  }
+}
+
 for (const { name, src } of files) {
-  fs.writeFileSync(here(`../dist/${name}.html`), render(src, css, records));
+  fs.writeFileSync(here(`../dist/${name}.html`), render(src, css, records, headerData));
   console.log(`built dist/${name}.html`);
 }
 try { fs.cpSync(here('../img/'), here('../dist/img/'), { recursive: true }); } catch {}

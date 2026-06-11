@@ -9,7 +9,7 @@ page
 section
   title The Method
   num 01
-  subtitle The starting point
+  stamp The starting point
 
   para
     align left
@@ -18,16 +18,18 @@ section
     This is not symbolic interpretation applied afterward. The commandment appears as a consequence of the architecture.
     A useful analogy: a circuitry diagram, a machine's code, and its operating manual describe the same machine from different levels of abstraction. Of course they match — they were always describing the same system. The Tree describes the network. The letters describe the operators running on it. The commandments describe the constraints required to keep those operators functioning.
 
-  image
+/  image
     src tol-spirit.png
 
 section
+  image tol-spirit.png
+  imgsize 25
   title The Two Tablets
   num 02
-  subtitle Two architectures
+  stamp Two architectures
 
-  card
-    step Two Architectures
+  para
+    align left
     The Ten Commandments split into two tablets of five. The right tablet establishes order from the top down — the architecture of alignment, the conditions under which the Creator's light can safely descend into the world. The left tablet maps how order decomposes — the architecture of restriction and failure, tracing how corruption propagates upward from distorted desire toward the severing of life itself.
     The paths themselves are neutral conduits. The question is never whether energy flows through them. The question is whether the flow is aligned or distorted.
     What makes the structure striking is that the two tablets are not two separate lists. They are five principles, each with two faces — one aligned, one corrupted — operating on the same channel from opposite directions. Read that way, the commandments are not ten rules. They are five descriptions of what can go right, and five descriptions of what goes wrong when it does.
