@@ -235,6 +235,8 @@ html[data-theme="light"] .site-nav { background: rgba(244,239,230,0.94); }
 }
 .ct-title { font-family: var(--fh); font-size: 1.2rem; color: var(--text); }
 .ct-subtitle { font-family: var(--fh); font-size: 0.95rem; font-style: italic; color: var(--dim); }
+.card-title.ct-left  { align-items: flex-start; text-align: left; }
+.card-title.ct-right { align-items: flex-end;   text-align: right; }
 
 /* ── Card: link ── */
 .card.card-link {
@@ -275,6 +277,7 @@ html[data-theme="light"] .site-nav { background: rgba(244,239,230,0.94); }
   display: flex; flex-direction: column; gap: 1px;
 }
 .grid-wrap .card { border: none; }
+.principle .grid-wrap { margin-bottom: 0; }
 /* simple N-col: applied directly on .grid-wrap */
 .g1 { display: flex; flex-direction: column; gap: 1px; }
 .g2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; }

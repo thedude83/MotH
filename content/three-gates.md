@@ -18,9 +18,6 @@ section
     This is not symbolic interpretation applied afterward. The commandment appears as a consequence of the architecture.
     A useful analogy: a circuitry diagram, a machine's code, and its operating manual describe the same machine from different levels of abstraction. Of course they match — they were always describing the same system. The Tree describes the network. The letters describe the operators running on it. The commandments describe the constraints required to keep those operators functioning.
 
-/  image
-    src tol-spirit.png
-
 section
   image tol-spirit.png
   imgsize 25
