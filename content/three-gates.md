@@ -6,7 +6,7 @@ page
   subtitle Architecture of the Soul
   flavor The commandments are not the starting point. The path mechanics are. What follows is the map.
 
-section
+/section
   title The Method
   num 01
   stamp The starting point
@@ -18,7 +18,7 @@ section
     This is not symbolic interpretation applied afterward. The commandment appears as a consequence of the architecture.
     A useful analogy: a circuitry diagram, a machine's code, and its operating manual describe the same machine from different levels of abstraction. Of course they match — they were always describing the same system. The Tree describes the network. The letters describe the operators running on it. The commandments describe the constraints required to keep those operators functioning.
 
-section
+/section
   image tol-spirit.png
   imgsize 25
   title The Two Tablets
@@ -34,7 +34,7 @@ section
 
   para
 
-  grid 6|6
+/  grid 6|6
     width 500px
     card-title.right
       title Right Tablet
@@ -103,7 +103,7 @@ section
       path הוד → יסוד
       gloss Coveting poisons the Foundation with envy before anything can rise.
 
-section
+/section
   title The Five Principles
   num 03
   subtitle Each principle has two faces — one aligned, one corrupted — operating on the same channel
@@ -144,7 +144,7 @@ section
         name Inheritance / Acquisition
         tag The Ecology
 
-  principle
+  /principle
     num Principle 1
     name Source / Existence
     card-face.right
@@ -162,7 +162,7 @@ section
     card
       The right face opens the window toward the only object of desire that cannot be possessed. The left face — murder — tears out the peg that holds a life to that same source. One establishes the orientation. The other severs it permanently in another. Same channel, opposite movements.
 
-  principle
+  /principle
     num Principle 2
     name Boundary / Desire
     card-face.right
@@ -180,7 +180,7 @@ section
     card
       Chet establishes the fence. Ayin is what looks over the fence. The healthy sequence: wisdom → boundary → relationship. The distorted sequence: observation → desire → violation of the boundary.
 
-  principle
+  /principle
     num Principle 3
     name Stewardship / Appropriation
     card-face.right
@@ -198,7 +198,7 @@ section
     card
       Both faces ask the same question: what do you do with what has been entrusted to you? Tet is stewardship of spiritual authority. Tzadi is stewardship of material boundary. The failure mode in both cases is mishandling something given — one by misuse of power, one by appropriation of what belongs elsewhere.
 
-  principle
+  /principle
     num Principle 4
     name True Witness / False Witness
     card-face.right
@@ -216,7 +216,7 @@ section
     card
       Yod testifies to reality through action. Samekh protects the circuit through which reality is communicated in speech. One creates a true narrative through what it does. The other destroys the channel that makes truthful communication possible. This is the strongest structural mirror in the whole system.
 
-  principle
+  /principle
     num Principle 5
     name Inheritance / Acquisition
     card-face.right
@@ -234,7 +234,7 @@ section
     card
       Nun asks: what has been given to me? Lamed distorted asks: what belongs to someone else? Honoring lineage acknowledges inheritance — I stand in a chain. Coveting rejects it — I compare myself against another chain. This is the deepest psychological pair. It reaches the root of identity itself.
 
-section
+/section
   title תפארת — The Regulator
   num 04
   subtitle The center holds — or it doesn't
@@ -247,8 +247,7 @@ section
 
 section
   title The Three Gates — The Ascent
-  num 05
-  subtitle The third architecture
+  /num 05
 
   card
     step The Third Architecture
@@ -262,7 +261,7 @@ section
     step The First Gate
     The soul begins in מלכות — the world of physical action, where everything has already materialized. One path leads upward. It opens with a mark. The mark is not earned; it arrives. It is the moment when no external acquisition reaches the hunger that remains. The world's goods have been fully tried. None of them fill the place that is still empty. That emptiness is the signal. The Foundation is now accessible.
 
-  card
+  /card
     step What the Tablets Prepared
     Whether the Foundation can hold the mark depends on what has pooled there. The right tablet's fifth path has been feeding יסוד from above — Nun submerging inherited drive into deep waters, keeping the pool clean. The left tablet's tenth path attacks the same crossing from below — Lamed's distorted steering poisoning the Foundation with envy of what belongs to another. If the pool is clean, the mark initiates a real ascent. If the pool is corrupted, the soul receives the signal and cannot hold it.
 
@@ -272,7 +271,7 @@ section
     step The Second Gate
     Resh is the head of a river — not the intellect, but the source. To pass this gate is to trace the waters back to where they begin. Everything that has pooled in יסוד — drives, inherited patterns, unnamed yearnings, the accumulated weight of what has not yet found its name — rises now to meet the heart. The ascent from Foundation to תפארת is the movement of bringing what is subconscious into the light of conscious experience. The beginning of real inner work.
 
-  card
+  /card
     step What the Tablets Prepared
     תפארת receives from both tablets simultaneously. The soul that has maintained the right tablet's architecture — the window open, the fence intact, the coil functioning, the seed planted — arrives at the heart with its channels clear. The soul that has allowed the left tablet's failure modes — the eye wandering, the fishhook projecting, the insulation punctured — finds the heart already compromised before the crossing begins. The two tablets are not background context. They are the condition of the heart that greets the ascending soul.
 
@@ -282,7 +281,7 @@ section
     step The Third Gate
     Dalet is a door. It stands between the purified heart and the unknowable Crown. Its handle is on the inside. The door does not open through understanding — it opens through השתוות הצורה, equivalence of form. The soul that has turned its intention, that has made the quality of giving its own rather than merely admiring it, finds the door already open. The alignment is the key. Not the knowledge of alignment. The actual turning.
 
-  card
+  /card
     step What the Tablets Prepared
     The highest corruption on the left tablet — murder — operates on the same path as the highest alignment on the right: both touch כתר. The first commandment opens a window in the Source. The sixth commandment describes the destruction of the hook that fastens a life to that same Source. The soul that arrives at this final gate carries the full record of the two tablets with it. Every operator maintained, every failure mode encountered and navigated. The door reads all of it.
 

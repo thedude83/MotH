@@ -63,3 +63,10 @@ and `content/three-gates.md` for working examples.
 - Hebrew glyphs appear in `glyph` slots; the shell loads the matching web font.
 - Output is fully self-contained HTML with inlined CSS from `src/styles.css`.
 - After any change to `src/` or `content/`, rebuild and check `dist/` output.
+
+## Tools convention
+
+Each tool lives in its own subdirectory: `tools/<tool-name>/index.md` → `dist/tools/<tool-name>/index.html`.
+Persistent data goes in `data/tools/<tool-name>/`. Nav links in `tools/header.md` reference tools by slug
+(e.g. `ethics-tracker/index`). A tool can have its own `header.md` for per-tool branding; otherwise it
+inherits the top-level `tools/header.md`.

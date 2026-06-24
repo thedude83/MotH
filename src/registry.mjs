@@ -1,5 +1,6 @@
 // LANGUAGE — word → builder. Add bits here as we build them.
 import { section                               } from './bits/section.mjs';
+import { subsection                           } from './bits/subsection.mjs';
 import { card                                  } from './bits/card.mjs';
 import { cardTitle                             } from './bits/card-title.mjs';
 import { cardLink                              } from './bits/card-link.mjs';
@@ -23,9 +24,21 @@ import { svgDesire1, svgDesire2, svgDesire3,
 import { quote, quoteBig                      } from './bits/quote.mjs';
 import { list                                 } from './bits/list.mjs';
 import { important                            } from './bits/important.mjs';
+import { checklist                            } from './bits/checklist.mjs';
+import { formField                            } from './bits/form-field.mjs';
+import { sceneRow                             } from './bits/scene-row.mjs';
+import { harmRow                              } from './bits/harm-row.mjs';
+import { formSubmit                           } from './bits/form-submit.mjs';
+import { modeSection                          } from './bits/mode-section.mjs';
+import { modeTabs                             } from './bits/mode-tabs.mjs';
+import { scriptBlock                          } from './bits/script-block.mjs';
+import { statBar                              } from './bits/stat-bar.mjs';
+import { calGrid                              } from './bits/cal-grid.mjs';
+import { ethicsStats                          } from './bits/ethics-stats.mjs';
 
 export const registry = {
   section,
+  subsection,
   card,
   'card-mirror':       card,
   'card-title':        cardTitle,
@@ -63,4 +76,15 @@ export const registry = {
   'quote.big':         quoteBig,
   list,
   important,
+  checklist,
+  'form-field':     formField,
+  'scene-row':      sceneRow,
+  'harm-row':       harmRow,
+  'form-submit':    formSubmit,
+  'mode-section':   modeSection,
+  'mode-tabs':      modeTabs,
+  'script-block':   scriptBlock,
+  'stat-bar':       statBar,
+  'cal-grid':       calGrid,
+  'ethics-stats':   ethicsStats,
 };

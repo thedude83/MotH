@@ -1,6 +1,6 @@
 page
   type splash
-  next divine-work
+  next books/trivium/the-liberal-arts
   glyph מחשבת אמת
   title personal thought
   subtitle Meditations of the Heart

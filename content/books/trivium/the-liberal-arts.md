@@ -1,10 +1,11 @@
 page
   type content
   width 600px
+  title2 |
   title The Liberal Arts
-  subtitle The Liberal Arts of Logic, Grammar, and Rhetoric
+  subtitle of Logic, Grammar, and Rhetoric
   flavor Sister Miriam Joseph, C.S.C., Ph.D.
-  glyph The Truth Shall Set You Free
+  glyph Truth Shall Set You Free
 
 section trivium-quadrivium
   title The Trivium and The Quadrivium

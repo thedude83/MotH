@@ -1,11 +1,15 @@
 // [fo] + /fu/ — fixed top bar: brand + section links + scroll-spy
-export function nav({ brand, sections }) {
+export function nav({ brand, sections, pageLinks = [] }) {
   const links = [{ id: 'top', label: 'Overview' }, ...sections]
     .map(s => `<a href="#${s.id}">${s.label}</a>`)
     .join('\n  ');
+  const pageLinksHtml = pageLinks.length
+    ? `<div class="nav-page-links">${pageLinks.map(l => `<a href="${l.href}">${l.label}</a>`).join('\n  ')}</div>`
+    : '';
   return `<nav class="site-nav">
   <a class="nav-brand" href="#top">${brand}</a>
   ${links}
+  ${pageLinksHtml}
 </nav>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
